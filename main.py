@@ -36,15 +36,15 @@ for i in range(0, nx):
 ll = np.zeros(nx-1)
 kk = np.zeros(nx-1)
 
-'for i in range(0, nx):'
-
 for j in range(1, nt):
     ll[0] = 0
-    kk[0] = u[j, 0]
+    kk[0] = u[j][0]
     for i in range(1, nx-1):
         ll[i] = r/(1+2*r-r*ll[i-1])
         kk[i] = ((r*u[j-1][i-1]+(1-2*r)*u[j-1][i]+r*u[j-1][i+1])+r*kk[i-1])/(1+2*r-r*ll[i-1])
-    
+    for i in range(nx-2, -1, -1):
+        u[j][i] = ll[i]*u[j][i+1]+kk[i]
+
 """
 plt.matshow(u)
 plt.show()
