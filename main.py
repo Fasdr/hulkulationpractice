@@ -4,8 +4,8 @@ from math import exp
 
 "Задаем начальные параметры"
 
-h = 0.001  # шаг по x
-t = 0.001  # шаг по t
+h = 0.01  # шаг по x
+t = 0.01  # шаг по t
 a = 0.022
 r = a*t/(2*(h**2))
 
@@ -41,7 +41,7 @@ for j in range(1, nt):
     kk[0] = u[j][0]
     for i in range(1, nx-1):
         ll[i] = r/(1+2*r-r*ll[i-1])
-        kk[i] = ((r*u[j-1][i-1]+(1-2*r)*u[j-1][i]+r*u[j-1][i+1])+r*kk[i-1])/(1+2*r-r*ll[i-1])
+        kk[i] = ((r*u[j-1][i-1]+(1-2*r)*u[j-1][i]+r*u[j-1][i+1]+t*f[j][i])+r*kk[i-1])/(1+2*r-r*ll[i-1])
     for i in range(nx-2, -1, -1):
         u[j][i] = ll[i]*u[j][i+1]+kk[i]
 
@@ -53,13 +53,13 @@ xx = np.arange(0, 1+h, h)
 
 for i in range(0, 11):
     plt.figure(figsize=(20, 10))
-    plt.subplot(2, 2,  1)
+    plt.subplot(2, 1,  1)
     plt.plot(xx, u[i * int(0.1 / t)])
     plt.title('Решение разностной схемы при t = ' + str(i/10))
     plt.xlabel('Коордианата x')
     plt.ylabel('Значение функции')
     plt.grid(True)
-    plt.subplot(2, 2,  2)
+    plt.subplot(2, 1,  2)
     plt.plot(xx, ru[i * int(0.1 / t)])
     plt.title('Точное решение уравнения при t = ' + str(i / 10))
     plt.xlabel('Коордианата x')
@@ -68,13 +68,13 @@ for i in range(0, 11):
     plt.show()
 
 plt.figure(figsize=(20, 10))
-plt.subplot(2, 2,  1)
+plt.subplot(2, 1,  1)
 plt.plot(tt, u[:, int(0.5 / h)])
 plt.title('Решение разностной схемы при x = 0.5')
 plt.xlabel('Коордианата t')
 plt.ylabel('Значение функции')
 plt.grid(True)
-plt.subplot(2, 2,  2)
+plt.subplot(2, 1,  2)
 plt.plot(tt, ru[:, int(0.5 / h)])
 plt.title('Точное решение уравнения при x = 0.5')
 plt.xlabel('Коордианата t')
