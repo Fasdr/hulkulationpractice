@@ -4,8 +4,8 @@ from math import exp
 
 "Задаем начальные параметры"
 
-h = 0.05  # шаг по x
-t = 0.05  # шаг по t
+h = 0.001  # шаг по x
+t = 0.001  # шаг по t
 a = 0.022
 r = a*t/(2*(h**2))
 
@@ -52,40 +52,34 @@ tt = np.arange(0, 1+t, t)
 xx = np.arange(0, 1+h, h)
 
 for i in range(0, 11):
+    plt.figure(figsize=(20, 10))
     plt.subplot(2, 2,  1)
-    plt.plot(tt, u[i * int(0.1 / h)])
+    plt.plot(xx, u[i * int(0.1 / t)])
     plt.title('Решение разностной схемы при t = ' + str(i/10))
     plt.xlabel('Коордианата x')
     plt.ylabel('Значение функции')
     plt.grid(True)
     plt.subplot(2, 2,  2)
-    plt.plot(tt, ru[i * int(0.1 / h)])
+    plt.plot(xx, ru[i * int(0.1 / t)])
     plt.title('Точное решение уравнения при t = ' + str(i / 10))
     plt.xlabel('Коордианата x')
     plt.ylabel('Значение функции')
     plt.grid(True)
     plt.show()
 
+plt.figure(figsize=(20, 10))
+plt.subplot(2, 2,  1)
+plt.plot(tt, u[:, int(0.5 / h)])
+plt.title('Решение разностной схемы при x = 0.5')
+plt.xlabel('Коордианата t')
+plt.ylabel('Значение функции')
+plt.grid(True)
+plt.subplot(2, 2,  2)
+plt.plot(tt, ru[:, int(0.5 / h)])
+plt.title('Точное решение уравнения при x = 0.5')
+plt.xlabel('Коордианата t')
+plt.ylabel('Значение функции')
+plt.grid(True)
+plt.show()
 
-
-
-#
-# plt.subplot(1, 2, 1)
-# plt.plot(xx, u[:, 0])
-#
-# plt.xlabel('time (s)')
-# plt.ylabel('voltage (mV)')
-# plt.title('A sine wave with a gap of NaNs between 0.4 and 0.6')
-# plt.grid(True)
-#
-# plt.subplot(1, 2, 2)
-# plt.plot(tt, ru[:, 0])
-# plt.title('Also with NaN in first and last point')
-#
-# plt.xlabel('time (s)')
-# plt.ylabel('more nans')
-# plt.grid(True)
-#
-# plt.tight_layout()
-# plt.show()
 
