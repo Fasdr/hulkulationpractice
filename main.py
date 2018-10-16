@@ -51,12 +51,29 @@ tt = np.arange(0, 1+t, t)
 
 xx = np.arange(0, 1+h, h)
 
-s = 1 + np.sin(2 * np.pi * tt)
+# fig, ax = plt.subplots()
+#
+# ax.grid()
+#
+# ax.plot(xx, u[4])
 
-fig, ax = plt.subplots()
 
-ax.grid()
+plt.subplot(1, 2, 1)
+plt.plot(tt, u[0])
 
-ax.plot(tt, s)
+plt.xlabel('time (s)')
+plt.ylabel('voltage (mV)')
+plt.title('A sine wave with a gap of NaNs between 0.4 and 0.6')
+plt.grid(True)
 
+plt.subplot(1, 2, 2)
+plt.plot(tt, ru[0])
+plt.title('Also with NaN in first and last point')
+
+plt.xlabel('time (s)')
+plt.ylabel('more nans')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
 plt.show()
