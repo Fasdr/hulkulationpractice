@@ -7,7 +7,7 @@ from math import exp
 h = 0.5  # шаг по x
 t = 0.5  # шаг по t
 a = 0.022
-r=a*t/(2*(h**2))
+r = a*t/(2*(h**2))
 
 nx = int(1/h)+1
 nt = int(1/t)+1
@@ -33,12 +33,16 @@ for i in range(0, nx):
 
 "Решаем разностную схему"
 
+l = np.zeros(nx-1)
+k = np.zeros(nx-1)
 
+'for i in range(0, nx):'
 
-for j in range(0, nt):
-
-    for i in range(0, nx):
-
+for j in range(1, nt):
+    l[0] = 0
+    k[0] = u[j, 0]
+    for i in range(1, nx-1):
+        l[i] = r/(1+2*r-r*l[i-1])
 
 """
 plt.matshow(u)
