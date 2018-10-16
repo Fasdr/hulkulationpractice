@@ -51,29 +51,41 @@ tt = np.arange(0, 1+t, t)
 
 xx = np.arange(0, 1+h, h)
 
-# fig, ax = plt.subplots()
+for i in range(0, 11):
+    plt.subplot(2, 2,  1)
+    plt.plot(tt, u[i * int(0.1 / h)])
+    plt.title('Решение разностной схемы при t = ' + str(i/10))
+    plt.xlabel('Коордианата x')
+    plt.ylabel('Значение функции')
+    plt.grid(True)
+    plt.subplot(2, 2,  2)
+    plt.plot(tt, ru[i * int(0.1 / h)])
+    plt.title('Точное решение уравнения при t = ' + str(i / 10))
+    plt.xlabel('Коордианата x')
+    plt.ylabel('Значение функции')
+    plt.grid(True)
+    plt.show()
+
+
+
+
 #
-# ax.grid()
+# plt.subplot(1, 2, 1)
+# plt.plot(xx, u[:, 0])
 #
-# ax.plot(xx, u[4])
+# plt.xlabel('time (s)')
+# plt.ylabel('voltage (mV)')
+# plt.title('A sine wave with a gap of NaNs between 0.4 and 0.6')
+# plt.grid(True)
+#
+# plt.subplot(1, 2, 2)
+# plt.plot(tt, ru[:, 0])
+# plt.title('Also with NaN in first and last point')
+#
+# plt.xlabel('time (s)')
+# plt.ylabel('more nans')
+# plt.grid(True)
+#
+# plt.tight_layout()
+# plt.show()
 
-
-plt.subplot(1, 2, 1)
-plt.plot(tt, u[0])
-
-plt.xlabel('time (s)')
-plt.ylabel('voltage (mV)')
-plt.title('A sine wave with a gap of NaNs between 0.4 and 0.6')
-plt.grid(True)
-
-plt.subplot(1, 2, 2)
-plt.plot(tt, ru[0])
-plt.title('Also with NaN in first and last point')
-
-plt.xlabel('time (s)')
-plt.ylabel('more nans')
-plt.grid(True)
-
-plt.tight_layout()
-plt.show()
-plt.show()
