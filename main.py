@@ -4,8 +4,8 @@ from math import exp
 
 "Задаем начальные параметры"
 
-h = 0.002  # шаг по x
-t = 0.002  # шаг по t
+h = 0.05  # шаг по x
+t = 0.05  # шаг по t
 a = 0.022
 r = a*t/(2*(h**2))
 
@@ -45,7 +45,18 @@ for j in range(1, nt):
     for i in range(nx-2, -1, -1):
         u[j][i] = ll[i]*u[j][i+1]+kk[i]
 
-"""
-plt.matshow(u)
+"Строим графики"
+
+tt = np.arange(0, 1+t, t)
+
+xx = np.arange(0, 1+h, h)
+
+s = 1 + np.sin(2 * np.pi * tt)
+
+fig, ax = plt.subplots()
+
+ax.grid()
+
+ax.plot(tt, s)
+
 plt.show()
-"""
