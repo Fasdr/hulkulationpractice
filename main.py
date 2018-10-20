@@ -48,8 +48,8 @@ for j in range(1, nt):
 b = u-ru
 c = -b
 
-# print(b.max())
-# print(c.max())
+print(b.max())
+print(c.max())
 
 "Строим графики"
 
@@ -60,25 +60,25 @@ xx = np.arange(0, 1+h, h)
 for i in range(0, 11):
     plt.figure(figsize=(20, 10))
     plt.subplot(1, 1,  1)
-    plt.plot(xx, u[i * int(0.1 / t)])
+    plt.plot(xx, u[i * int(0.1 / t)], 'bo')
     plt.title('t = ' + str(i/10))
     plt.xlabel('x')
     plt.ylabel('Value')
     plt.grid(True)
     plt.subplot(1, 1,  1)
-    plt.plot(xx, ru[i * int(0.1 / t)])
+    plt.plot(xx, ru[i * int(0.1 / t)], 'r+')
     plt.grid(True)
     plt.show()
 
 plt.figure(figsize=(20, 10))
 plt.subplot(1, 1,  1)
-plt.plot(tt, u[:, int(0.5 / h)])
+plt.plot(tt, u[:, int(0.5 / h)], 'bo')
 plt.title('x = 0.5')
 plt.xlabel('t')
 plt.ylabel('Value')
 plt.grid(True)
 plt.subplot(1, 1,  1)
-plt.plot(tt, ru[:, int(0.5 / h)])
+plt.plot(tt, ru[:, int(0.5 / h)], 'r+')
 plt.grid(True)
 plt.show()
 
