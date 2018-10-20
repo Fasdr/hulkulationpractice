@@ -4,8 +4,8 @@ from math import exp
 
 "Задаем начальные параметры"
 
-h = 0.01  # шаг по x
-t = 0.01 # шаг по t
+h = 0.1  # шаг по x
+t = 0.1  # шаг по t
 a = 0.022
 r = a*t/(2*(h**2))
 
@@ -48,44 +48,38 @@ for j in range(1, nt):
 b = u-ru
 c = -b
 
-print(b.max())
-print(c.max())
+# print(b.max())
+# print(c.max())
 
-# "Строим графики"
-#
-# tt = np.arange(0, 1+t, t)
-#
-# xx = np.arange(0, 1+h, h)
-#
-# for i in range(0, 11):
-#     plt.figure(figsize=(20, 10))
-#     plt.subplot(2, 1,  1)
-#     plt.plot(xx, u[i * int(0.1 / t)])
-#     plt.title('Решение разностной схемы при t = ' + str(i/10))
-#     plt.xlabel('Коордианата x')
-#     plt.ylabel('Значение функции')
-#     plt.grid(True)
-#     plt.subplot(2, 1,  2)
-#     plt.plot(xx, ru[i * int(0.1 / t)])
-#     plt.title('Точное решение уравнения при t = ' + str(i / 10))
-#     plt.xlabel('Коордианата x')
-#     plt.ylabel('Значение функции')
-#     plt.grid(True)
-#     plt.show()
-#
-# plt.figure(figsize=(20, 10))
-# plt.subplot(2, 1,  1)
-# plt.plot(tt, u[:, int(0.5 / h)])
-# plt.title('Решение разностной схемы при x = 0.5')
-# plt.xlabel('Коордианата t')
-# plt.ylabel('Значение функции')
-# plt.grid(True)
-# plt.subplot(2, 1,  2)
-# plt.plot(tt, ru[:, int(0.5 / h)])
-# plt.title('Точное решение уравнения при x = 0.5')
-# plt.xlabel('Коордианата t')
-# plt.ylabel('Значение функции')
-# plt.grid(True)
-# plt.show()
+"Строим графики"
+
+tt = np.arange(0, 1+t, t)
+
+xx = np.arange(0, 1+h, h)
+
+for i in range(0, 11):
+    plt.figure(figsize=(20, 10))
+    plt.subplot(1, 1,  1)
+    plt.plot(xx, u[i * int(0.1 / t)])
+    plt.title('t = ' + str(i/10))
+    plt.xlabel('x')
+    plt.ylabel('Value')
+    plt.grid(True)
+    plt.subplot(1, 1,  1)
+    plt.plot(xx, ru[i * int(0.1 / t)])
+    plt.grid(True)
+    plt.show()
+
+plt.figure(figsize=(20, 10))
+plt.subplot(1, 1,  1)
+plt.plot(tt, u[:, int(0.5 / h)])
+plt.title('x = 0.5')
+plt.xlabel('t')
+plt.ylabel('Value')
+plt.grid(True)
+plt.subplot(1, 1,  1)
+plt.plot(tt, ru[:, int(0.5 / h)])
+plt.grid(True)
+plt.show()
 
 
