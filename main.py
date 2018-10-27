@@ -2,19 +2,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 from math import exp
 
-"Задаем начальные параметры"
 
-h = 0.1  # шаг по x
-t = 0.1  # шаг по t
+h = 0.01
+t = 0.01
 a = 0.022
 r = a*t/(2*(h**2))
 
 nx = int(1/h)+1
 nt = int(1/t)+1
 
-u = np.zeros((nt, nx))  # решение разностной схемы
+u = np.zeros((nt, nx))
 f = np.zeros((nt, nx))
-ru = np.zeros((nt, nx))  # точное решение уравнения
+ru = np.zeros((nt, nx))
 
 for i in range(0, nx):
     for j in range(0, nt):
@@ -31,7 +30,6 @@ for i in range(0, nx):
     for j in range(0, nt):
         f[j][i] = (i*h)+2*(t*j)-exp(i*h)+a*(12*((i*h)**2)-2+(t*j)*exp(i*h))
 
-"Решаем разностную схему"
 
 ll = np.zeros(nx-1)
 kk = np.zeros(nx-1)
@@ -51,7 +49,6 @@ c = -b
 print(b.max())
 print(c.max())
 
-"Строим графики"
 
 tt = np.arange(0, 1+t, t)
 
