@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from math import exp
+from math import exp,sin,cos,pi
 
 
 h = 0.01
@@ -48,7 +48,6 @@ for j in range(1, nt):
 #
 # print(b.max())
 # print(c.max())
-#
 #
 # tt = np.arange(0, 1+t, t)
 #
