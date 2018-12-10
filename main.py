@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from math import exp,sin,cos,pi
+from math import exp
 
 
-h = 0.01
+h = 0.001
 t = 0.01
 a = 0.022
 r = a*t/(2*(h**2))
@@ -43,12 +43,12 @@ for j in range(1, nt):
     for i in range(nx-2, -1, -1):
         u[j][i] = ll[i]*u[j][i+1]+kk[i]
 
-# b = u-ru
-# c = -b
-#
-# print(b.max())
-# print(c.max())
-#
+b = u-ru
+c = -b
+
+print(b.max())
+print(c.max())
+
 # tt = np.arange(0, 1+t, t)
 #
 # xx = np.arange(0, 1+h, h)
